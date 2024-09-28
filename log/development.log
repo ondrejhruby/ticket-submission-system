@@ -29,3 +29,19 @@ FOREIGN KEY ("user_id")
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240928192253') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-09-28 21:55:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ondrahruby/.rvm/rubies/ruby-3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ondrahruby/.rvm/rubies/ruby-3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.7ms | GC: 1.3ms)
+Completed 200 OK in 35ms (Views: 8.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-28 22:04:30 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ondrahruby/.rvm/rubies/ruby-3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ondrahruby/.rvm/rubies/ruby-3.2.0/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+

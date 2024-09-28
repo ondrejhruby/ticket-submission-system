@@ -1,10 +1,16 @@
-<h1>Your Tickets</h1>
+<h1 class="my-4">Your Tickets</h1>
 
-<% @tickets.each do |ticket| %>
-  <div class="ticket">
-    <h2><%= ticket.title %></h2>
-    <p><strong>Category:</strong> <%= ticket.category %></p>
-    <p><%= ticket.description %></p>
-    <p><strong>Submitted on:</strong> <%= ticket.created_at.strftime("%B %d, %Y") %></p>
-  </div>
-<% end %>
+<div class="row">
+  <% @tickets.each do |ticket| %>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= ticket.title %></h5>
+          <p class="card-text"><strong>Category:</strong> <%= ticket.category %></p>
+          <p class="card-text"><%= truncate(ticket.description, length: 100) %></p>
+          <p class="card-text text-muted"><small>Submitted on: <%= ticket.created_at.strftime("%B %d, %Y") %></small></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
