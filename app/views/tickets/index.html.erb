@@ -1,0 +1,10 @@
+<h1>Your Tickets</h1>
+
+<% @tickets.each do |ticket| %>
+  <div class="ticket">
+    <h2><%= ticket.title %></h2>
+    <p><strong>Category:</strong> <%= ticket.category %></p>
+    <p><%= ticket.description %></p>
+    <p><strong>Submitted on:</strong> <%= ticket.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+<% end %>
