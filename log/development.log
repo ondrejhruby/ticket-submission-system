@@ -21,7 +21,7 @@ Migrating to AddDeviseToUsers (20240928191918)
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateTickets (20240928192253)
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "category" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_538a036fb9"
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "department" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_538a036fb9"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
 )[0m
@@ -108,10 +108,10 @@ Migrating to AddUserToTickets (20240928210622)
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "category" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "department" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
   [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_atickets_on_user_id" ON "atickets" ("user_id")[0m
-  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "atickets" ("id","title","description","category","user_id","created_at","updated_at")
-                     SELECT "id","title","description","category","user_id","created_at","updated_at" FROM "tickets"[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "atickets" ("id","title","description","department","user_id","created_at","updated_at")
+                     SELECT "id","title","description","department","user_id","created_at","updated_at" FROM "tickets"[0m
   [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "tickets"[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
@@ -276,11 +276,11 @@ Completed 200 OK in 30ms (Views: 17.4ms | ActiveRecord: 0.2ms (1 query, 0 cached
 
 Started POST "/tickets" for 127.0.0.1 at 2024-09-29 16:09:07 +0200
 Processing by TicketsController#create as TURBO_STREAM
-  Parameters: {"authenticity_token"=>"[FILTERED]", "ticket"=>{"title"=>"Windows crashed", "description"=>"My windows OS has crashed and not working", "category"=>"IT Support"}, "commit"=>"Create Ticket"}
+  Parameters: {"authenticity_token"=>"[FILTERED]", "ticket"=>{"title"=>"Windows crashed", "description"=>"My windows OS has crashed and not working", "department"=>"IT Support"}, "commit"=>"Create Ticket"}
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   ↳ app/controllers/tickets_controller.rb:13:in `create'
-  [1m[36mTicket Create (2.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "category", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Windows crashed"], ["description", "My windows OS has crashed and not working"], ["category", "IT Support"], ["user_id", 1], ["created_at", "2024-09-29 14:09:07.615613"], ["updated_at", "2024-09-29 14:09:07.615613"]]
+  [1m[36mTicket Create (2.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "department", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Windows crashed"], ["description", "My windows OS has crashed and not working"], ["department", "IT Support"], ["user_id", 1], ["created_at", "2024-09-29 14:09:07.615613"], ["updated_at", "2024-09-29 14:09:07.615613"]]
   ↳ app/controllers/tickets_controller.rb:13:in `create'
   [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
   ↳ app/controllers/tickets_controller.rb:13:in `create'
@@ -302,3 +302,81 @@ Processing by TicketsController#index as TURBO_STREAM
 Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:12:27 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:6
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/tickets/index.html.erb:7
+  Rendered tickets/index.html.erb within layouts/application (Duration: 20.1ms | GC: 13.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | GC: 13.1ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 2.0ms (3 queries, 0 cached) | GC: 20.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `department' for #<Ticket id: 1, title: "Windows crashed", description: "My windows OS has crashed and not working", category: "IT Support", user_id: 1, created_at: "2024-09-29 14:09:07.615613000 +0000", updated_at: "2024-09-29 14:09:07.615613000 +0000">):
+
+Causes:
+NoMethodError (undefined method `department' for #<Ticket id: 1, title: "Windows crashed", description: "My windows OS has crashed and not working", category: "IT Support", user_id: 1, created_at: "2024-09-29 14:09:07.615613000 +0000", updated_at: "2024-09-29 14:09:07.615613000 +0000">)
+     9:         <div class="card mb-4 shadow-sm">
+    10:           <div class="card-body">
+    11:             <h5 class="card-title"><%= ticket.title %></h5>
+    12:             <p class="card-text"><strong>department:</strong> <%= ticket.department %></p>
+    13:             <p class="card-text"><%= truncate(ticket.description, length: 100) %></p>
+    14:             <p class="card-text text-muted"><small>Submitted on: <%= ticket.created_at.strftime("%B %d, %Y") %></small></p>
+    15:           </div>
+  
+app/views/tickets/index.html.erb:12
+app/views/tickets/index.html.erb:7
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (1.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTicket Destroy (0.6ms)[0m  [1m[31mDELETE FROM "tickets" WHERE "tickets"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:19:11 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:6
+  Rendered tickets/index.html.erb within layouts/application (Duration: 9.0ms | GC: 6.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 35.1ms | GC: 13.5ms)
+Completed 200 OK in 70ms (Views: 39.2ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 19.9ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2024-09-29 16:19:12 +0200
+Processing by TicketsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 4.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:19:27 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:6
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoleToUsers (20240929142648)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "role" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240929142648') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

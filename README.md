@@ -25,7 +25,7 @@ The **Ticket Submission System** allows users to create an account, log in, and 
 ## Features
 
 - **User Authentication**: Sign up, log in, and log out with Devise.
-- **Ticket Creation**: Users can submit new support tickets with a title, description, and category.
+- **Ticket Creation**: Users can submit new support tickets with a title, description, and department.
 - **User Dashboard**: Logged-in users can view all tickets they have submitted.
 - **Bootstrap UI**: The user interface is styled using Bootstrap for a clean and responsive design.
 - **Flash Messages**: Feedback messages are shown for actions like successful ticket creation or validation errors.
@@ -90,11 +90,11 @@ rails server
 ## Testing the Application
 - Sign Up: Click on Sign Up to create a new user account.
 - Log In: Use the credentials you signed up with to log in.
-- Create a Ticket: Click on New Ticket to create a support ticket. Provide a title, description, and category.
+- Create a Ticket: Click on New Ticket to create a support ticket. Provide a title, description, and department.
 - View Tickets: After logging in, click on Your Tickets to view all the tickets you have created.
 
 ## Future Enhancements
-- Assign Tickets to Departments: Allow tickets to be assigned to specific departments based on category.
+- Assign Tickets to Departments: Allow tickets to be assigned to specific departments based on department.
 - Admin Dashboard: Create a role-based system where admins can view and manage all tickets.
 - Notifications: Implement email notifications to inform users of ticket status changes.
 - Commenting System: Add the ability for users and support staff to comment on tickets.

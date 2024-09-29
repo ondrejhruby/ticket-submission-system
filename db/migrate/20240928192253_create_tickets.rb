@@ -3,7 +3,7 @@ class CreateTickets < ActiveRecord::Migration[7.2]
     create_table :tickets do |t|
       t.string :title
       t.text :description
-      t.string :category
+      t.string :department
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
