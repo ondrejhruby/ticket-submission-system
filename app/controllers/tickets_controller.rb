@@ -1,7 +1,16 @@
 class TicketsController < ApplicationController
     # Ensure user is logged in before allowing access to these actions
     before_action :authenticate_user!
-  
+
+    # Display all tickets assigned to the current user's department
+    def index
+      if current_user.admin?
+        @tickets = Ticket.all
+      else
+       @tickets = Ticket.where(department: current_user.role)
+      end
+    end
+
     # Action to show the form for creating a new ticket
     def new
       @ticket = Ticket.new
@@ -17,10 +26,10 @@ class TicketsController < ApplicationController
       end
     end
   
-    # Action to display all tickets for the current user
-    def index
-      @tickets = current_user.tickets
-    end
+    # # Action to display all tickets for the current user
+    # def index
+    #   @tickets = current_user.tickets
+    # end
   
     # Private method to define the allowed parameters for a ticket
     private

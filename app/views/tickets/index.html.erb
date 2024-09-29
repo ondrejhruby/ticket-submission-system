@@ -1,6 +1,4 @@
-<h1 class="my-4">Your Tickets</h1>
-
-<%= link_to 'Create New Ticket', new_ticket_path, class: 'btn btn-primary mb-4' %>
+<h1 class="my-4">Tickets Assigned to Your Department</h1>
 
 <div class="row">
   <% if @tickets.any? %>
@@ -9,7 +7,7 @@
         <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <h5 class="card-title"><%= ticket.title %></h5>
-            <p class="card-text"><strong>department:</strong> <%= ticket.department %></p>
+            <p class="card-text"><strong>Department:</strong> <%= ticket.department %></p>
             <p class="card-text"><%= truncate(ticket.description, length: 100) %></p>
             <p class="card-text text-muted"><small>Submitted on: <%= ticket.created_at.strftime("%B %d, %Y") %></small></p>
           </div>
@@ -17,6 +15,6 @@
       </div>
     <% end %>
   <% else %>
-    <p>You have no tickets yet. <%= link_to 'Create one now!', new_ticket_path %></p>
+    <p>No tickets assigned to your department at the moment.</p>
   <% end %>
 </div>

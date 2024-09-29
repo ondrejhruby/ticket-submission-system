@@ -23,9 +23,9 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :department, class: 'form-label' %>
-    <%= form.text_field :department, class: 'form-control' %>
-  </div>
+  <%= form.label :department, class: 'form-label' %>
+  <%= form.select :department, options_for_select(Ticket.departments.keys.map { |dep| [dep.humanize, dep] }), {}, class: 'form-control' %>
+</div>
 
   <div class="actions">
     <%= form.submit 'Create Ticket', class: 'btn btn-primary' %>

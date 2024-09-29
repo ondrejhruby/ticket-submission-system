@@ -380,3 +380,1015 @@ Migrating to AddRoleToUsers (20240929142648)
   [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240929142648') RETURNING "version"[0m
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:34:41 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 11.9ms | GC: 9.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | GC: 10.5ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 5.1ms (2 queries, 0 cached) | GC: 18.6ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:34:56 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:34:57 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 2.1ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.5ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 1.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:36:33 +0200
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:36:34 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:36:48 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (7.0ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 10.3ms | GC: 8.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | GC: 8.4ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 7.9ms (2 queries, 0 cached) | GC: 18.4ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:36:49 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveDepartmentFromTickets (20240929144158)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "category" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_atickets_on_user_id" ON "atickets" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atickets" ("id","title","description","category","user_id","created_at","updated_at")
+                     SELECT "id","title","description","category","user_id","created_at","updated_at" FROM "tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "tickets"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "category" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_tickets_on_user_id" ON "tickets" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "tickets" ("id","title","description","category","user_id","created_at","updated_at")
+                     SELECT "id","title","description","category","user_id","created_at","updated_at" FROM "atickets"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "atickets"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240929144158') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:44:00 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (7.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 11.6ms | GC: 9.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | GC: 9.5ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 9.0ms (2 queries, 0 cached) | GC: 18.8ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 16:44:02 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:06 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:10 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 5.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:11 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:12 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:14 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:15 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:30 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (7.4ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 12.9ms | GC: 10.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 10.7ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 8.5ms (2 queries, 0 cached) | GC: 19.3ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 16:44:40 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 1.9ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:19:08 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (14.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 4.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 16.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:20:51 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (14.9ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 27.1ms | GC: 18.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.4ms | GC: 18.3ms)
+Completed 500 Internal Server Error in 761ms (ActiveRecord: 17.9ms (2 queries, 0 cached) | GC: 34.5ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: tickets.department):
+
+Causes:
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: tickets.department)
+SQLite3::SQLException (no such column: tickets.department)
+    1: <h1 class="my-4">Tickets Assigned to Your Department</h1>
+    2: 
+    3: <div class="row">
+    4:   <% if @tickets.any? %>
+    5:     <% @tickets.each do |ticket| %>
+    6:       <div class="col-md-4">
+    7:         <div class="card mb-4 shadow-sm">
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDepartmentEnumToTickets (20240929202119)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "department" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240929202119') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (3.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "role" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2024-09-29 20:29:32.814655"], ["role", "IT Support"], ["id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:29:55 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :department, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:Ticket> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/ticket.rb:8)
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "IT Support"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  Rendered tickets/index.html.erb within layouts/application (Duration: 4.8ms | GC: 3.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | GC: 10.5ms)
+Completed 200 OK in 75ms (Views: 39.4ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 21.4ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2024-09-29 22:30:03 +0200
+Processing by TicketsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (Duration: 10.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 15.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2024-09-29 22:30:33 +0200
+Processing by TicketsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "ticket"=>{"title"=>"Windows crashed", "description"=>"Windows has crashed and is not restarting", "department"=>"it_support"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+  [1m[36mTicket Create (0.8ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "category", "user_id", "created_at", "updated_at", "department") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Windows crashed"], ["description", "Windows has crashed and is not restarting"], ["category", nil], ["user_id", 1], ["created_at", "2024-09-29 20:30:33.862120"], ["updated_at", "2024-09-29 20:30:33.862120"], ["department", "IT Support"]]
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+Redirected to http://127.0.0.1:3000/tickets
+Completed 302 Found in 14ms (ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 22:30:33 +0200
+Processing by TicketsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "IT Support"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  [1m[36mTicket Load (0.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."department" = ?[0m  [["department", "IT Support"]]
+  ↳ app/views/tickets/index.html.erb:5
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:30:47 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:34:57 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:35:00 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:35:01 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:43:09 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-09-29 22:43:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:43:16 +0200
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :department, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:Ticket> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/ticket.rb:8)
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "IT Support"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  [1m[36mTicket Load (0.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."department" = ?[0m  [["department", "IT Support"]]
+  ↳ app/views/tickets/index.html.erb:5
+  Rendered tickets/index.html.erb within layouts/application (Duration: 3.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | GC: 0.0ms)
+Completed 200 OK in 88ms (Views: 38.9ms | ActiveRecord: 2.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2024-09-29 22:43:29 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 12ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:43:29 +0200
+Processing by TicketsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-09-29 22:43:29 +0200
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.9ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 1.0ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:43:29 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | GC: 0.1ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.1ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:43:39 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.2ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:43:43 +0200
+Processing by TicketsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-09-29 22:43:43 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered /Users/ondrahruby/.rvm/gems/ruby-3.2.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.4ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :role, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:User> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/user.rb:7)
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-09-29 22:52:30 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | GC: 2.5ms)
+Completed 200 OK in 56ms (Views: 34.8ms | ActiveRecord: 0.9ms (0 queries, 0 cached) | GC: 10.1ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2024-09-29 22:52:32 +0200
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:52:33 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.2ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 1.1ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-09-29 22:53:21 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"it_support"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-09-29 20:53:21.637144"], ["updated_at", "2024-09-29 20:53:21.637144"], ["role", "IT Support"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 284ms (ActiveRecord: 3.0ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:53:21 +0200
+Processing by TicketsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+DEPRECATION WARNING: Defining enums with keyword arguments is deprecated and will be removed
+in Rails 8.0. Positional arguments should be used instead:
+
+enum :department, {:admin=>"admin", :it_support=>"IT Support", :ai_engineer=>"AI Engineer", :hardware_engineer=>"Hardware Engineer", :hr=>"HR"}
+ (called from <class:Ticket> at /Users/ondrahruby/Documents/Work/ticket-submission-system/app/models/ticket.rb:8)
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "IT Support"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  [1m[36mTicket Load (0.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."department" = ?[0m  [["department", "IT Support"]]
+  ↳ app/views/tickets/index.html.erb:5
+  Rendered tickets/index.html.erb within layouts/application (Duration: 3.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.2ms)
+Completed 200 OK in 10ms (Views: 5.2ms | ActiveRecord: 0.3ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/tickets/new" for 127.0.0.1 at 2024-09-29 22:53:33 +0200
+Processing by TicketsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.1ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2024-09-29 22:53:45 +0200
+Processing by TicketsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "ticket"=>{"title"=>"Got harrassed", "description"=>"", "department"=>"hr"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/tickets" for 127.0.0.1 at 2024-09-29 22:53:59 +0200
+Processing by TicketsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "ticket"=>{"title"=>"Got harrassed", "description"=>"Got harrassed at work by Franta", "department"=>"hr"}, "commit"=>"Create Ticket"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+  [1m[36mTicket Create (1.0ms)[0m  [1m[32mINSERT INTO "tickets" ("title", "description", "category", "user_id", "created_at", "updated_at", "department") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Got harrassed"], ["description", "Got harrassed at work by Franta"], ["category", nil], ["user_id", 2], ["created_at", "2024-09-29 20:53:59.930522"], ["updated_at", "2024-09-29 20:53:59.930522"], ["department", "HR"]]
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/tickets_controller.rb:22:in `create'
+Redirected to http://127.0.0.1:3000/tickets
+Completed 302 Found in 12ms (ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2024-09-29 22:53:59 +0200
+Processing by TicketsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "IT Support"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  [1m[36mTicket Load (0.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."department" = ?[0m  [["department", "IT Support"]]
+  ↳ app/views/tickets/index.html.erb:5
+  Rendered tickets/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2024-09-29 22:54:08 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 24ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:54:08 +0200
+Processing by TicketsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 14ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 12.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-09-29 22:54:08 +0200
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.6ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:54:08 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | GC: 0.6ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:54:11 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.3ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-09-29 22:54:28 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"hr"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-09-29 20:54:29.191834"], ["updated_at", "2024-09-29 20:54:29.191834"], ["role", "HR"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 276ms (ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:54:29 +0200
+Processing by TicketsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tickets/index.html.erb within layouts/application
+  [1m[36mTicket Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "tickets" WHERE "tickets"."department" = ? LIMIT ?[0m  [["department", "HR"], ["LIMIT", 1]]
+  ↳ app/views/tickets/index.html.erb:4
+  [1m[36mTicket Load (0.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."department" = ?[0m  [["department", "HR"]]
+  ↳ app/views/tickets/index.html.erb:5
+  Rendered tickets/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.2ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.1ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2024-09-29 22:54:36 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 10ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-29 22:54:36 +0200
+Processing by TicketsController#index as TURBO_STREAM
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-09-29 22:54:36 +0200
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.4ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-09-29 22:54:36 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 9.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 12.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
