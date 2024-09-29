@@ -16,7 +16,7 @@ A simple ticket submission system built using Ruby on Rails, designed to help us
   - [Testing the Application](#testing-the-application)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Overview
 
