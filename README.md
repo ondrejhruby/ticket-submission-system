@@ -16,7 +16,6 @@ A simple ticket submission system built using Ruby on Rails, designed to help us
   - [Testing the Application](#testing-the-application)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -92,10 +91,13 @@ rails server
 - Log In: Use the credentials you signed up with to log in.
 - Create a Ticket: Click on New Ticket to create a support ticket. Provide a title, description, and department.
 - View Tickets: After logging in, click on Your Tickets to view all the tickets you have created.
+- Assign Tickets to Departments: Allow tickets to be assigned to specific departments based on department dropdown.
+- Admin Dashboard: A role-based system where admins can view and manage all tickets.
+- User Depatment Roles: A role-based system based on their department (they see only the tickets assigned to them.
 
 ## Future Enhancements
-- Assign Tickets to Departments: Allow tickets to be assigned to specific departments based on department.
-- Admin Dashboard: Create a role-based system where admins can view and manage all tickets.
+- Check Tickets as finished
+- Integrate AI to assign tickets to departments
 - Notifications: Implement email notifications to inform users of ticket status changes.
 - Commenting System: Add the ability for users and support staff to comment on tickets.
 
